@@ -1,0 +1,212 @@
+# 第二集剧本生成器
+# 负责生成第二集剧本，摆烂伪装，胭脂榜启
+
+from utils.color_marker import ColorMarker
+from utils.sound_generator import SoundGenerator
+
+class SecondEpisodeGenerator:
+    """
+    第二集剧本生成器
+    
+    负责生成第二集剧本，摆烂伪装，胭脂榜启
+    """
+    
+    def __init__(self, config_manager, data_manager):
+        """
+        初始化第二集生成器
+        
+        Args:
+            config_manager (ConfigManager): 配置管理器
+            data_manager (DataManager): 数据管理器
+        """
+        self.config_manager = config_manager
+        self.data_manager = data_manager
+        self.color_marker = ColorMarker()
+        self.sound_generator = SoundGenerator()
+    
+    def generate(self, episode, outline):
+        """
+        生成第二集剧本
+        
+        Args:
+            episode (int): 集数
+            outline (dict): 剧情大纲
+            
+        Returns:
+            str: 生成的剧本内容
+        """
+        script_content = self.build_script_structure(episode, outline)
+        return script_content
+    
+    def build_script_structure(self, episode, outline):
+        """
+        构建剧本结构
+        
+        Args:
+            episode (int): 集数
+            outline (dict): 剧情大纲
+            
+        Returns:
+            str: 剧本内容
+        """
+        title = outline["title"]
+        characters = "陆念离、御史、醉仙楼头牌、蒙面女子、六剑奴、达官贵人（数名）"
+        scenes = "2-1 夜 外 镇北王府·大门；2-2 夜 内 长安·醉仙楼大厅；2-3 夜 内 长安·醉仙楼顶层雅间"
+        scene_content = self.generate_scene_content(outline)
+        
+        script = f"{title}\n\n"
+        script += f"出场人物：{characters}\n\n"
+        script += f"场景列表：{scenes}\n\n"
+        script += scene_content
+        
+        return script
+    
+    def generate_scene_content(self, outline):
+        """
+        生成场景内容
+        
+        Args:
+            outline (dict): 剧情大纲
+            
+        Returns:
+            str: 场景内容
+        """
+        content = ""
+        content += self.generate_mansion_gate_scene()
+        content += self.generate_zuixianlou_hall_scene()
+        content += self.generate_zuixianlou_private_room_scene()
+        return content
+    
+    def generate_mansion_gate_scene(self):
+        """
+        生成镇北王府大门场景
+        
+        Returns:
+            str: 场景内容
+        """
+        content = "2-1 夜 外 镇北王府·大门\n\n"
+        
+        content += "△夜，镇北王府大门，灯笼摇晃，守卫站立。\n"
+        content += "△陆念离从王府出来，穿月白锦袍，脚步踉跄，嘴里哼着小曲。\n"
+        content += "△六剑奴跟在身后，戴青铜面具，手按剑柄。\n"
+        content += "△金色字体，竖向，悬浮在六道黑影旁边，显示：六剑奴：系统新手礼包势力\n"
+        
+        content += "陆念离（挥手）：走，去醉仙楼！我要画美人！\n"
+        
+        content += "△守卫看着陆念离背影，摇头叹气。\n"
+        content += "守卫（摇头）：世子受惊过度，疯癫了。\n"
+        
+        return content
+    
+    def generate_zuixianlou_hall_scene(self):
+        """
+        生成醉仙楼大厅场景
+        
+        Returns:
+            str: 场景内容
+        """
+        content = "\n2-2 夜 内 长安·醉仙楼大厅\n\n"
+        
+        content += "△醉仙楼大厅挂几十盏琉璃灯，灯光亮如白昼。中央舞池里，舞姬穿彩衣跳舞，水袖甩起时带起风。丝竹声、笑声、酒杯碰撞声混在一起。\n"
+        content += "△达官贵人坐满桌椅，有的搂歌姬喝酒，有的凑一起说话。\n"
+        
+        content += "△二楼临窗软榻，陆念离斜躺，左手搭在榻沿，右手端着清酒杯。\n"
+        content += "△小桌上摆着宣纸、墨砚，狼毫笔放在宣纸上未动。\n"
+        content += "△六剑奴隐在软榻两侧阴影里。\n"
+        
+        content += "△御史穿紫袍，站在软榻前，眉头紧皱。\n"
+        content += "△金色字体，竖向，悬浮在紫袍官员旁边，显示：御史：太子党，监察百官\n"
+        
+        content += "御史（指着陆念离）：世子殿下，镇北王府世子，竟流连烟花之地，画美人图，成何体统！\n"
+        
+        content += "陆念离（端酒杯晃了晃）：本世子受惊过度，画画解闷，关你何事？\n"
+        
+        content += "御史（冷笑）：陛下派我来查看世子殿下，没想到世子如此不务正业。我这就向陛下如实禀报！\n"
+        
+        content += "△陆念离放下酒杯，拿起狼毫笔，蘸墨。\n"
+        content += "△他抬手在宣纸上画，笔走龙蛇，墨色晕开。\n"
+        
+        content += self.color_marker.mark_yellow("△陆念离召出苍生笔虚影，与手中狼毫笔重叠。\n")
+        
+        content += "△画作完成，是一幅紫袍官员收受贿赂的画像。\n"
+        content += "△画作自动从桌上飘起，飘到禁军统领面前。\n"
+        
+        content += "△禁军统领接过画，看了一眼，脸色大变。\n"
+        content += "禁军统领（看向御史）：御史大人，这画上的人，是您吧？\n"
+        
+        content += "△御史脸色惨白，后退两步。\n"
+        content += "御史（摆手）：误会！这是误会！\n"
+        
+        content += "△禁军统领挥手，两名禁军上前，架住御史。\n"
+        content += "禁军统领：带走！御史贪赃枉法，证据确凿！\n"
+        
+        content += "△御史被拖走，嘴里喊着冤枉。\n"
+        
+        content += self.color_marker.mark_green("系统提示：【叮！摆烂行为成功！奖励摆烂值500点！】\n")
+        
+        content += "△陆念离拿起酒杯，一饮而尽。\n"
+        content += "陆念离（看向大厅）：来人，把醉仙楼头牌请上来！我要画胭脂榜！\n"
+        
+        return content
+    
+    def generate_zuixianlou_private_room_scene(self):
+        """
+        生成醉仙楼顶层雅间场景
+        
+        Returns:
+            str: 场景内容
+        """
+        content = "\n2-3 夜 内 长安·醉仙楼顶层雅间\n\n"
+        
+        content += "△顶层雅间开着窗，能看到长安夜景。\n"
+        content += "△房间中央摆红木画案，上铺白色宣纸，旁边放徽墨、湖笔、端砚。\n"
+        content += "△烛火放在画案一侧，光线柔和，照亮宣纸。\n"
+        
+        content += "△醉仙楼头牌坐在画案对面椅子上，穿月白色纱裙，裙摆绣浅淡芦花。\n"
+        content += "△金色字体，竖向，悬浮在女子旁边，显示：醉仙楼头牌：长安名妓\n"
+        
+        content += "醉仙楼头牌（起身敛衽躬身）：小女见过世子殿下。不知殿下要为小女画什么？\n"
+        
+        content += "陆念离（抬手让她坐下）：不用多礼。你气质如蒹葭，便画《蒹葭苍苍》。\n"
+        
+        content += "△陆念离拿起湖笔，召出苍生笔虚影，与手中湖笔重叠。\n"
+        content += "△笔尖蘸徽墨，轻轻落在宣纸上。\n"
+        content += "△画道之力从笔尖流出，墨色在宣纸上晕开，快速勾勒出女子的眉眼、纱裙上的芦花，线条细腻。\n"
+        
+        content += "△最后一笔落下，窗外突然飘起漫天芦花，金色霞光从云层透出，照得芦花发亮。\n"
+        content += "△醉仙楼楼下传来一片惊呼声，有人推开窗户抬头看。\n"
+        
+        content += self.sound_generator.generate_sound("哇", "惊呼声")
+        
+        content += self.color_marker.mark_green("系统提示：【叮！创作《蒹葭苍苍》评级神品！引天地异象（漫天芦花+金色霞光）！奖励摆烂值500点！】\n")
+        
+        content += "△醉仙楼头牌快步走到画案前，盯着宣纸上的画，眼睛慢慢红了。\n"
+        content += "△她突然转身，跪在陆念离面前。\n"
+        content += self.sound_generator.generate_sound("扑通", "跪地声")
+        
+        content += "醉仙楼头牌（声音哽咽）：殿下画技出神入化！求殿下收小女为徒！小女愿侍奉殿下左右，潜心学画！\n"
+        
+        content += "陆念离（弯腰扶她起身）：我收你为徒。但你要帮我——留意醉仙楼达官贵人的谈话，记下太子死忠的动向，每三天让百晓通来取情报。\n"
+        
+        content += "醉仙楼头牌（用力点头）：弟子遵令！定不辱使命！\n"
+        
+        content += "△陆念离拿起画卷，轻轻卷好递到女子手中。\n"
+        content += "△他走到窗边，看着楼下热闹的景象，指尖捏着窗沿。\n"
+        
+        content += "陆念离（语气冷）：有了醉仙楼的情报，朱峰，我看你往哪逃。\n"
+        
+        content += self.color_marker.mark_green("系统提示：【主线任务进度更新：1/10（瓦解太子死忠势力）。下一步：揭露太子勾结外敌罪证，在朝堂上瓦解太子势力。】\n")
+        
+        content += "△楼下人群里，一个蒙面女子转身就走。\n"
+        content += "△六剑奴刚要动，被陆念离抬手拦住。\n"
+        
+        content += "陆念离（嘴角勾笑）：让她走，正好给太子报信。\n"
+        
+        content += "△蒙面女子停下脚步，回头看向陆念离的胭脂榜。\n"
+        content += "蒙面女子（指着胭脂榜）：世子的画，缺了一位真正的大人物。\n"
+        content += "△她从怀中掏出一枚玉佩，放在桌上，转身离开。\n"
+        content += "△玉佩上刻着百晓堂标记。\n"
+        
+        content += self.color_marker.mark_blue("△陆念离拿起玉佩，看着蒙面女子消失的方向，若有所思。\n")
+        
+        return content

@@ -1,0 +1,27 @@
+# 项目配置
+project:
+  name: "AI漫剧剧本生成器"
+  version: "1.0.0"
+
+# 路径配置
+paths:
+  doc_dir: "doc"
+  outline_dir: "doc/剧情大纲"
+  output_dir: "doc/剧本正文"
+
+# 生成配置
+generation:
+  creativity_level: 0.3  # 低创造性
+  first_episode_priority: true  # 优先处理第一集
+  second_episode_priority: true  # 优先处理第二集
+
+# 验证配置
+validation:
+  enable_rule_check: true  # 启用规则检查
+  enable_consistency_check: true  # 启用一致性检查
+  enable_format_check: true  # 启用格式检查
+
+# 日志配置
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
